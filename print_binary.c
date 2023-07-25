@@ -3,7 +3,7 @@
 
 /**
  * print_binary - Prints an unsigned number
- * @types: Lista of arguments
+ * @types: the list of the arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width.
@@ -14,8 +14,8 @@
 int print_binary(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	unsigned int n, m, i, sum;
-	unsigned int a[32];
+	unsigned int i, j, k, sum;
+	unsigned int b[32];
 	int count;
 
 	UNUSED(buffer);
@@ -24,22 +24,22 @@ int print_binary(va_list types, char buffer[],
 	UNUSED(precision);
 	UNUSED(size);
 
-	n = va_arg(types, unsigned int);
-	m = 2147483648; /* (2 ^ 31) */
-	a[0] = n / m;
-	for (i = 1; i < 32; i++)
+	i = va_arg(types, unsigned int);
+	j = 2147483648; /* (2 ^ 31) */
+	b[0] = i / j;
+	for (k = 1; k < 32; k++)
 	{
-		m /= 2;
-		a[i] = (n / m) % 2;
+		j /= 2;
+		b[k] = (i / j) % 2;
 	}
-	for (i = 0, sum = 0, count = 0; i < 32; i++)
+	for (k = 0, sum = 0, count = 0; k < 32; k++)
 	{
-		sum += a[i];
-		if (sum || i == 31)
+		sum += b[k];
+		if (sum || k == 31)
 		{
-			char z = '0' + a[i];
+			char v = '0' + b[k];
 
-			write(1, &z, 1);
+			write(1, &v, 1);
 			count++;
 		}
 	}
