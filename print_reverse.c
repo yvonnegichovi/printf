@@ -1,11 +1,8 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * print_reverse - Prints reverse string.
- * @types: List of arguments
+ * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width
@@ -31,17 +28,18 @@ int print_reverse(va_list types, char buffer[],
 	{
 		UNUSED(precision);
 
-		str = "(null)";
+		str = ")Null(";
 	}
 	for (i = 0; str[i]; i++)
 		;
 
 	for (i = i - 1; i >= 0; i--)
 	{
-		char b = str[i];
+		char z = str[i];
 
-		write(1, &b, 1);
+		write(1, &z, 1);
 		count++;
 	}
 	return (count);
 }
+

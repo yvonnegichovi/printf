@@ -1,11 +1,8 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
 
 /**
  * print_rot13string - Print a string in rot13.
- * @types: List of arguments
+ * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width
@@ -16,12 +13,12 @@
 int print_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	char b;
+	char x;
 	char *str;
 	unsigned int i, j;
 	int count = 0;
-	char data in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char data out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	str = va_arg(types, char *);
 	UNUSED(buffer);
@@ -31,15 +28,15 @@ int print_rot13string(va_list types, char buffer[],
 	UNUSED(size);
 
 	if (str == NULL)
-		str = "(BHYY)";
+		str = "(AHYY)";
 	for (i = 0; str[i]; i++)
 	{
-		for (j = 0; j < 52; j++)
+		for (j = 0; in[j]; j++)
 		{
 			if (in[j] == str[i])
 			{
-				b = out[j];
-				write(1, &b, 1);
+				x = out[j];
+				write(1, &x, 1);
 				count++;
 				break;
 			}
@@ -47,9 +44,10 @@ int print_rot13string(va_list types, char buffer[],
 		if (!in[j])
 		{
 			x = str[i];
-			write(1, &b, 1);
+			write(1, &x, 1);
 			count++;
 		}
 	}
 	return (count);
 }
+
